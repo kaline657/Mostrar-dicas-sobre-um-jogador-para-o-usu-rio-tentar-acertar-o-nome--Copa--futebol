@@ -163,6 +163,7 @@ def mostrar_menu():
     print("3 - Jogar adivinhacao")
     print("4 - Cadastrar novo jogador")
     print("5 - Atualizar jogador")
+    print("6 - Remover jogador")
     print("0 - Sair")
 
 
@@ -335,6 +336,19 @@ def atualizar_jogador():
         print("Opcao invalida. Nenhuma alteracao foi feita.")
 
 
+def remover_jogador():
+    print("\n--- REMOVER JOGADOR ---")
+
+    chave = input("Digite a chave do jogador que deseja remover: ")
+    chave = chave.upper()
+
+    if chave in jogadores:
+        del jogadores[chave]
+        print("Jogador removido com sucesso.")
+    else:
+        print("Jogador nao encontrado. Nenhuma remocao foi feita.")
+
+
 def executar_programa():
     while True:
         mostrar_menu()
@@ -355,6 +369,9 @@ def executar_programa():
 
         elif opcao == "5":
             atualizar_jogador()
+
+        elif opcao == "6":
+            remover_jogador()
 
         elif opcao == "0":
             print("Programa encerrado.")

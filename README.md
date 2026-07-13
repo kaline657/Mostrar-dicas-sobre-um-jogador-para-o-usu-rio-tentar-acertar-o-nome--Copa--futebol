@@ -56,3 +56,10 @@ Foi adicionada a funcionalidade de atualizar jogador.
 O usuário informa a chave do jogador e escolhe qual campo deseja alterar: nome, seleção, posição, camisa, geração ou dicas.
 
 A atualização é feita diretamente no dicionário principal `jogadores`. Também há tratamento para chave inexistente e para entrada inválida no número da camisa.
+## Atualização: remoção de jogador
+
+Foi adicionada a funcionalidade de remover jogador.
+
+O usuário informa a chave do jogador e, caso ela exista no dicionário principal, o registro é removido usando `del`.
+
+Caso a chave não exista, o programa informa que nenhum jogador foi encontrado, evitando erro durante a execução.
