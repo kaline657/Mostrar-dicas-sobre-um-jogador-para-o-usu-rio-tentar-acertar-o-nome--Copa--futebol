@@ -185,24 +185,57 @@ O projeto possui os seguintes arquivos:
 - `adivinhe_jogador.py`: arquivo principal com o código do sistema.
 - `README.md`: documentação do projeto.
 
+## Decisão de implementação
+
+No início do desenvolvimento, foi planejada uma versão com interface gráfica local usando Tkinter. Nessa primeira tentativa, a estrutura foi separada em pastas, como `dados`, `funcoes` e `interface`, com o objetivo de deixar o código mais organizado e visualmente mais próximo de um sistema com tela própria.
+
+A ideia inicial era entregar o projeto com uma interface local, em que o usuário pudesse jogar clicando em botões, visualizando dicas e respostas em uma janela gráfica. Porém, durante os testes, percebi que essa versão estava ficando mais difícil de ajustar e explicar dentro do prazo. Além disso, a interface gráfica estava tornando o projeto mais complexo do que o necessário para o objetivo principal da atividade.
+
+Como o foco do trabalho era o uso de dicionários em Python como estrutura central, optei por refazer o projeto em uma versão mais simples, funcionando pelo terminal, com menu interativo. Essa decisão deixou o código mais claro, mais fácil de testar e mais alinhado com os requisitos da disciplina.
+
+A versão final manteve as principais ideias planejadas desde o início:
+
+- jogadores armazenados em dicionários;
+- dicas para o usuário tentar adivinhar o jogador;
+- busca por chave;
+- cadastro de novos jogadores;
+- atualização de dados;
+- remoção de jogadores;
+- tratamento de entradas inválidas.
+
+Também decidi usar o GitHub para registrar o desenvolvimento por etapas, fazendo commits separados para cada parte importante do projeto. Dessa forma, foi possível mostrar a evolução do trabalho, desde a estrutura inicial até a versão final no terminal.
+
+## Observação sobre a tentativa com interface
+
+Antes da versão final, foi feita uma tentativa de desenvolver uma interface gráfica local usando Tkinter. Essa tentativa ajudou no planejamento da estrutura do sistema, mas não foi mantida como versão final porque aumentava a complexidade do projeto e dificultava a explicação do código.
+
+A versão escolhida para entrega foi a versão em terminal, pois ela demonstra melhor o uso de dicionários, funções, menu, consultas e modificações de dados, que são os pontos centrais da atividade.
+<img width="1918" height="1017" alt="image" src="https://github.com/user-attachments/assets/3d509c8f-b469-40d9-8ba3-6bea22df64d9" />
+
+
 ## Relatório de uso de IA
 
 Foi utilizada a ferramenta ChatGPT como apoio durante o desenvolvimento do trabalho.
 
 A IA foi usada para auxiliar na interpretação do enunciado, organização das etapas, revisão da modelagem com dicionários, sugestão de funções, explicação do funcionamento do código e estruturação do README.
 
-O código foi construído por etapas, com commits separados no repositório, para registrar a evolução do projeto. As funcionalidades foram testadas durante o desenvolvimento, incluindo listagem, busca, jogo de adivinhação, cadastro, atualização, remoção e tratamento de entradas inválidas.
+No início, também foi solicitado apoio para tentar criar uma interface gráfica local usando Tkinter. Porém, após testes e análise, essa ideia foi adaptada. A versão com interface não foi escolhida para a entrega final, pois deixava o projeto mais complexo do que o necessário.
 
-Algumas sugestões foram adaptadas para manter o projeto simples e coerente com o conteúdo da disciplina. Foram evitadas bibliotecas externas, banco de dados, interface web ou estruturas mais avançadas, mantendo o foco no uso de dicionários em Python.
+Depois disso, o projeto foi refeito em uma versão mais simples, usando terminal e menu interativo. Essa escolha foi feita para manter o foco no conteúdo da disciplina: uso de dicionários em Python, escolha de chaves, consultas, inserção, atualização, remoção e tratamento de erros.
 
-Com o desenvolvimento do projeto, foi possível compreender melhor o uso de dicionários, a escolha de chaves únicas, a busca direta por chave, a atualização de valores e o tratamento de erros em programas interativos.
+O código foi desenvolvido por etapas, com commits separados no GitHub, para registrar a evolução do trabalho. As funcionalidades foram testadas durante o desenvolvimento, incluindo listagem, busca, jogo de adivinhação, cadastro, atualização, remoção e tratamento de entradas inválidas.
+
+Algumas sugestões da IA foram aceitas, outras foram adaptadas, e outras foram deixadas de lado. A principal adaptação foi abandonar a interface gráfica e seguir com uma versão mais simples e explicável no terminal.
+
+Com o desenvolvimento do projeto, foi possível compreender melhor:
+
+- como usar dicionários em Python;
+- como escolher chaves únicas;
+- como buscar valores diretamente por chave;
+- como atualizar registros dentro de um dicionário;
+- como remover registros;
+- como validar entradas do usuário;
+- como organizar o desenvolvimento em etapas usando GitHub.
 
 
 
-- O que eu modifiquei em relação às sugestões da IA, e por quê:
-
-- O que eu testei ou verifiquei no programa:
-
-- O que eu rejeitei das sugestões da IA, e a justificativa:
-
-- O que eu aprendi de novo durante o desenvolvimento do projeto:
