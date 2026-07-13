@@ -1,0 +1,1 @@
+print("Projeto AED - Adivinhe o Jogador da Copa")
