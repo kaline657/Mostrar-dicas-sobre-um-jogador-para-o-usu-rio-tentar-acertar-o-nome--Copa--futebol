@@ -13,3 +13,18 @@ O sistema mostrará dicas sobre jogadores reais da história das Copas, e o usu�
 A estrutura central do projeto será o dicionário em Python.
 
 Os jogadores serão armazenados usando pares chave -> valor, permitindo busca, consulta e modificação dos dados.
+## Modelagem inicial
+
+O sistema usa um dicionário chamado `jogadores`.
+
+Cada chave representa um jogador de forma única. A chave foi formada com a abreviação da seleção, o número da camisa e o nome do jogador.
+
+Exemplos:
+
+- `BRA10_PELE`
+- `ARG10_MESSI`
+- `POR07_CRISTIANO`
+
+Essa escolha foi feita porque a chave é uma string, portanto é imutável e pode ser usada como chave de dicionário. Além disso, ela facilita a identificação do jogador.
+
+Cada valor do dicionário também é um dicionário, contendo nome, seleção, posição, camisa, geração e dicas.
