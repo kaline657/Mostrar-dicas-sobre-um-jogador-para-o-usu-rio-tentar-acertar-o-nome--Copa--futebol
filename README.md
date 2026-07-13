@@ -197,13 +197,7 @@ Algumas sugestões foram adaptadas para manter o projeto simples e coerente com 
 
 Com o desenvolvimento do projeto, foi possível compreender melhor o uso de dicionários, a escolha de chaves únicas, a busca direta por chave, a atualização de valores e o tratamento de erros em programas interativos.
 
-## Relatório de Participação do Estudante
 
-A IA não tem como verificar de forma independente o quanto a estudante efetivamente participou da construção da resposta.
-
-Antes da entrega, preencher com minhas próprias palavras:
-
-- O que eu escrevi ou propus por conta própria:
 
 - O que eu modifiquei em relação às sugestões da IA, e por quê:
 
