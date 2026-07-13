@@ -34,4 +34,11 @@ Cada valor do dicionário também é um dicionário, contendo nome, seleção, p
 - Exibir um menu simples no terminal.
 - Tratar opção inválida no menu.
 
-Nesta etapa, o programa já permite interação inicial com o usuário por meio de um menu.
+Nesta etapa, o programa já permite interação inicial com o usuário por meio de um menu.7
+## Atualização: jogo de adivinhação
+
+Foi adicionada a funcionalidade principal do projeto: jogar adivinhação.
+
+O programa sorteia um jogador cadastrado no dicionário principal e mostra dicas para o usuário tentar acertar o nome.
+
+A pontuação começa em 50 pontos e diminui 10 pontos a cada resposta incorreta.

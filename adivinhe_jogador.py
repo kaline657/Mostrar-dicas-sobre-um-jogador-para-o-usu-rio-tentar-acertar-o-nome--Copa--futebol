@@ -1,3 +1,5 @@
+import random
+
 # Projeto: Adivinhe o Jogador da Copa
 # Estrutura central: dicionario em Python
 
@@ -158,6 +160,7 @@ def mostrar_menu():
     print("\n===== ADIVINHE O JOGADOR DA COPA =====")
     print("1 - Listar jogadores cadastrados")
     print("2 - Buscar jogador pela chave")
+    print("3 - Jogar adivinhacao")
     print("0 - Sair")
 
 
@@ -190,6 +193,38 @@ def buscar_jogador():
         print("Jogador nao encontrado. Verifique se a chave foi digitada corretamente.")
 
 
+def jogar():
+    print("\n--- JOGO DE ADIVINHAR JOGADOR ---")
+
+    chaves = list(jogadores.keys())
+    chave_sorteada = random.choice(chaves)
+    jogador = jogadores[chave_sorteada]
+
+    pontos = 50
+
+    print("Tente acertar o nome do jogador pelas dicas.")
+    print("Digite o nome sem acentos, como aparece no cadastro.")
+    print("Cada dica usada diminui 10 pontos.")
+
+    for dica in jogador["dicas"]:
+        print("\nDica:", dica)
+
+        resposta = input("Quem e o jogador? ")
+        resposta = resposta.strip()
+
+        if resposta.lower() == jogador["nome"].lower():
+            print("\nParabens! Voce acertou.")
+            print("Jogador:", jogador["nome"])
+            print("Pontuacao:", pontos)
+            return
+        else:
+            print("Resposta incorreta.")
+            pontos = pontos - 10
+
+    print("\nVoce nao acertou dessa vez.")
+    print("O jogador correto era:", jogador["nome"])
+
+
 def executar_programa():
     while True:
         mostrar_menu()
@@ -201,6 +236,9 @@ def executar_programa():
 
         elif opcao == "2":
             buscar_jogador()
+
+        elif opcao == "3":
+            jogar()
 
         elif opcao == "0":
             print("Programa encerrado.")
