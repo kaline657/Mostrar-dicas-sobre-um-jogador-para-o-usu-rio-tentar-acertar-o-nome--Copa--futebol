@@ -28,3 +28,10 @@ Exemplos:
 Essa escolha foi feita porque a chave é uma string, portanto é imutável e pode ser usada como chave de dicionário. Além disso, ela facilita a identificação do jogador.
 
 Cada valor do dicionário também é um dicionário, contendo nome, seleção, posição, camisa, geração e dicas.
+## Funcionalidades implementadas até agora
+
+- Listar jogadores cadastrados.
+- Exibir um menu simples no terminal.
+- Tratar opção inválida no menu.
+
+Nesta etapa, o programa já permite interação inicial com o usuário por meio de um menu.

@@ -154,5 +154,39 @@ jogadores = {
 }
 
 
-print("Modelagem inicial carregada com sucesso.")
-print("Quantidade de jogadores cadastrados:", len(jogadores))
+def mostrar_menu():
+    print("\n===== ADIVINHE O JOGADOR DA COPA =====")
+    print("1 - Listar jogadores cadastrados")
+    print("0 - Sair")
+
+
+def listar_jogadores():
+    print("\n--- JOGADORES CADASTRADOS ---")
+
+    for chave in jogadores:
+        print("\nChave:", chave)
+        print("Nome:", jogadores[chave]["nome"])
+        print("Selecao:", jogadores[chave]["selecao"])
+        print("Posicao:", jogadores[chave]["posicao"])
+        print("Camisa:", jogadores[chave]["camisa"])
+        print("Geracao:", jogadores[chave]["geracao"])
+
+
+def executar_programa():
+    while True:
+        mostrar_menu()
+
+        opcao = input("\nEscolha uma opcao: ")
+
+        if opcao == "1":
+            listar_jogadores()
+
+        elif opcao == "0":
+            print("Programa encerrado.")
+            break
+
+        else:
+            print("Opcao invalida. Escolha uma opcao do menu.")
+
+
+executar_programa()
