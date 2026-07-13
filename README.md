@@ -4,62 +4,211 @@ Projeto final da disciplina de Estrutura de Dados.
 
 ## Tema escolhido
 
-O tema escolhido foi um jogo de adivinhar jogador da Copa do Mundo.
+O tema escolhido foi **Jogo de Adivinhar Jogador da Copa**.
 
-O sistema mostrará dicas sobre jogadores reais da história das Copas, e o usuário tentará acertar o nome do jogador.
+O sistema mostra dicas sobre jogadores reais da história das Copas do Mundo, e o usuário tenta acertar o nome do jogador. A cada resposta incorreta, uma nova dica é exibida.
 
-## Estrutura de dados principal
+Esse tema está relacionado à proposta de “Jogo de adivinhar jogador”, em que o sistema apresenta pistas sobre um jogador e permite que o usuário tente descobrir o nome correto.
 
-A estrutura central do projeto será o dicionário em Python.
+## Objetivo do projeto
 
-Os jogadores serão armazenados usando pares chave -> valor, permitindo busca, consulta e modificação dos dados.
-## Modelagem inicial
+O objetivo do projeto é aplicar o uso de dicionários em Python como estrutura central de armazenamento, consulta e modificação de dados.
 
-O sistema usa um dicionário chamado `jogadores`.
+O programa permite armazenar jogadores, consultar informações, jogar uma rodada de adivinhação, cadastrar novos jogadores, atualizar dados já cadastrados e remover jogadores do sistema.
 
-Cada chave representa um jogador de forma única. A chave foi formada com a abreviação da seleção, o número da camisa e o nome do jogador.
+## Modelagem dos dicionários
 
-Exemplos:
+A estrutura central do projeto é o dicionário em Python.
 
-- `BRA10_PELE`
-- `ARG10_MESSI`
-- `POR07_CRISTIANO`
+O principal dicionário do sistema se chama `jogadores`. Ele armazena os jogadores cadastrados no formato **chave -> valor**.
 
-Essa escolha foi feita porque a chave é uma string, portanto é imutável e pode ser usada como chave de dicionário. Além disso, ela facilita a identificação do jogador.
+Cada chave representa um jogador de forma única. O valor associado a cada chave também é um dicionário, contendo as informações daquele jogador.
 
-Cada valor do dicionário também é um dicionário, contendo nome, seleção, posição, camisa, geração e dicas.
-## Funcionalidades implementadas até agora
+Exemplo da estrutura usada:
 
-- Listar jogadores cadastrados.
-- Exibir um menu simples no terminal.
-- Tratar opção inválida no menu.
+```python
+jogadores = {
+    "BRA10_PELE": {
+        "nome": "Pele",
+        "selecao": "Brasil",
+        "posicao": "Atacante",
+        "camisa": 10,
+        "geracao": "1950 a 1970",
+        "dicas": [
+            "Comecou a brilhar em Copas ainda muito jovem.",
+            "Fez parte de uma geracao historica da selecao brasileira.",
+            "Participou de titulos mundiais do Brasil.",
+            "Seu apelido esta ligado a realeza.",
+            "E conhecido como Rei do Futebol."
+        ]
+    }
+}
+```
 
-Nesta etapa, o programa já permite interação inicial com o usuário por meio de um menu.7
-## Atualização: jogo de adivinhação
+Dentro de cada jogador, foram armazenados os seguintes dados:
 
-Foi adicionada a funcionalidade principal do projeto: jogar adivinhação.
+- nome;
+- seleção;
+- posição;
+- número da camisa;
+- geração ou período em que jogou;
+- lista de dicas.
 
-O programa sorteia um jogador cadastrado no dicionário principal e mostra dicas para o usuário tentar acertar o nome.
+O sistema já inicia com 10 jogadores reais cadastrados, de diferentes seleções e gerações.
 
-A pontuação começa em 50 pontos e diminui 10 pontos a cada resposta incorreta.
-## Atualização: cadastro de jogador
+## Justificativa das chaves
 
-Foi adicionada a funcionalidade de cadastrar novo jogador.
+As chaves do dicionário foram criadas juntando três informações principais:
 
-O usuário informa chave, nome, seleção, posição, camisa, geração e cinco dicas. O novo jogador é inserido no dicionário principal `jogadores`.
+- abreviação da seleção;
+- número da camisa;
+- nome do jogador.
 
-Também foi adicionado tratamento de entrada inválida para o número da camisa, impedindo que texto seja aceito quando se espera um número.
-## Atualização: atualização de jogador
+Exemplos de chaves usadas:
 
-Foi adicionada a funcionalidade de atualizar jogador.
+```text
+BRA10_PELE
+ARG10_MESSI
+POR07_CRISTIANO
+FRA10_ZIDANE
+```
 
-O usuário informa a chave do jogador e escolhe qual campo deseja alterar: nome, seleção, posição, camisa, geração ou dicas.
+Essa escolha foi feita porque a chave precisa ser **única**, **imutável** e **hashable** para ser usada em um dicionário Python.
 
-A atualização é feita diretamente no dicionário principal `jogadores`. Também há tratamento para chave inexistente e para entrada inválida no número da camisa.
-## Atualização: remoção de jogador
+Como as chaves são strings, elas atendem a esse requisito. Além disso, esse formato facilita a identificação do jogador e evita confusão entre jogadores com nomes parecidos.
 
-Foi adicionada a funcionalidade de remover jogador.
+Por exemplo, a chave `BRA10_PELE` indica um jogador do Brasil, camisa 10, chamado Pelé.
 
-O usuário informa a chave do jogador e, caso ela exista no dicionário principal, o registro é removido usando `del`.
+## Funcionalidades implementadas
 
-Caso a chave não exista, o programa informa que nenhum jogador foi encontrado, evitando erro durante a execução.
+O sistema possui as seguintes funcionalidades:
+
+1. **Listar jogadores cadastrados**  
+   Exibe todos os jogadores armazenados no dicionário principal.
+
+2. **Buscar jogador pela chave**  
+   Permite consultar diretamente um jogador usando sua chave no dicionário.
+
+3. **Jogar adivinhação**  
+   Sorteia um jogador e mostra dicas para o usuário tentar acertar o nome.
+
+4. **Cadastrar novo jogador**  
+   Permite inserir um novo jogador no dicionário principal.
+
+5. **Atualizar jogador**  
+   Permite alterar dados de um jogador já cadastrado.
+
+6. **Remover jogador**  
+   Permite excluir um jogador do dicionário principal usando sua chave.
+
+## Explicação das funcionalidades
+
+### 1. Listar jogadores cadastrados
+
+Mostra todos os jogadores armazenados no dicionário principal, exibindo chave, nome, seleção, posição, camisa e geração.
+
+### 2. Buscar jogador pela chave
+
+Permite buscar diretamente um jogador usando sua chave no dicionário.
+
+Se a chave existir, os dados do jogador são exibidos. Se a chave não existir, o programa informa que o jogador não foi encontrado.
+
+### 3. Jogar adivinhação
+
+O programa sorteia um jogador cadastrado no dicionário e mostra dicas para o usuário tentar acertar o nome.
+
+A pontuação começa em 50 pontos. A cada resposta incorreta, o usuário recebe outra dica e perde 10 pontos.
+
+### 4. Cadastrar novo jogador
+
+Permite inserir um novo jogador no dicionário principal.
+
+O usuário informa chave, nome, seleção, posição, camisa, geração e cinco dicas.
+
+O programa verifica se a chave já existe antes de cadastrar.
+
+### 5. Atualizar jogador
+
+Permite alterar os dados de um jogador já cadastrado.
+
+O usuário informa a chave do jogador e escolhe qual campo deseja atualizar: nome, seleção, posição, camisa, geração ou dicas.
+
+### 6. Remover jogador
+
+Permite remover um jogador do dicionário principal usando a chave.
+
+Se a chave existir, o jogador é removido. Se a chave não existir, o programa informa que nenhum jogador foi encontrado.
+
+## Tratamento de erros e robustez
+
+O programa trata os seguintes casos:
+
+- opção inválida no menu;
+- busca por chave inexistente;
+- atualização de jogador inexistente;
+- remoção de jogador inexistente;
+- tentativa de cadastrar jogador com chave repetida;
+- campo vazio em entradas obrigatórias;
+- texto digitado quando se espera número da camisa.
+
+Quando o usuário digita uma opção inválida, o programa mostra uma mensagem e retorna ao menu. Quando o usuário digita uma chave que não existe, o programa informa que o jogador não foi encontrado. Quando o número da camisa é digitado incorretamente, o sistema pede o valor novamente.
+
+## Como executar o programa
+
+Para executar o projeto, é necessário ter o Python instalado no computador.
+
+No terminal, dentro da pasta do projeto, execute:
+
+```bash
+python adivinhe_jogador.py
+```
+
+Depois disso, o menu será exibido:
+
+```text
+===== ADIVINHE O JOGADOR DA COPA =====
+1 - Listar jogadores cadastrados
+2 - Buscar jogador pela chave
+3 - Jogar adivinhacao
+4 - Cadastrar novo jogador
+5 - Atualizar jogador
+6 - Remover jogador
+0 - Sair
+```
+
+O usuário deve digitar o número da opção desejada e seguir as instruções mostradas no terminal.
+
+## Arquivos do projeto
+
+O projeto possui os seguintes arquivos:
+
+- `adivinhe_jogador.py`: arquivo principal com o código do sistema.
+- `README.md`: documentação do projeto.
+
+## Relatório de uso de IA
+
+Foi utilizada a ferramenta ChatGPT como apoio durante o desenvolvimento do trabalho.
+
+A IA foi usada para auxiliar na interpretação do enunciado, organização das etapas, revisão da modelagem com dicionários, sugestão de funções, explicação do funcionamento do código e estruturação do README.
+
+O código foi construído por etapas, com commits separados no repositório, para registrar a evolução do projeto. As funcionalidades foram testadas durante o desenvolvimento, incluindo listagem, busca, jogo de adivinhação, cadastro, atualização, remoção e tratamento de entradas inválidas.
+
+Algumas sugestões foram adaptadas para manter o projeto simples e coerente com o conteúdo da disciplina. Foram evitadas bibliotecas externas, banco de dados, interface web ou estruturas mais avançadas, mantendo o foco no uso de dicionários em Python.
+
+Com o desenvolvimento do projeto, foi possível compreender melhor o uso de dicionários, a escolha de chaves únicas, a busca direta por chave, a atualização de valores e o tratamento de erros em programas interativos.
+
+## Relatório de Participação do Estudante
+
+A IA não tem como verificar de forma independente o quanto a estudante efetivamente participou da construção da resposta.
+
+Antes da entrega, preencher com minhas próprias palavras:
+
+- O que eu escrevi ou propus por conta própria:
+
+- O que eu modifiquei em relação às sugestões da IA, e por quê:
+
+- O que eu testei ou verifiquei no programa:
+
+- O que eu rejeitei das sugestões da IA, e a justificativa:
+
+- O que eu aprendi de novo durante o desenvolvimento do projeto:
