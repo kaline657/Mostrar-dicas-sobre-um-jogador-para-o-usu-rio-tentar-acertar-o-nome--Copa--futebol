@@ -42,3 +42,10 @@ Foi adicionada a funcionalidade principal do projeto: jogar adivinhação.
 O programa sorteia um jogador cadastrado no dicionário principal e mostra dicas para o usuário tentar acertar o nome.
 
 A pontuação começa em 50 pontos e diminui 10 pontos a cada resposta incorreta.
+## Atualização: cadastro de jogador
+
+Foi adicionada a funcionalidade de cadastrar novo jogador.
+
+O usuário informa chave, nome, seleção, posição, camisa, geração e cinco dicas. O novo jogador é inserido no dicionário principal `jogadores`.
+
+Também foi adicionado tratamento de entrada inválida para o número da camisa, impedindo que texto seja aceito quando se espera um número.

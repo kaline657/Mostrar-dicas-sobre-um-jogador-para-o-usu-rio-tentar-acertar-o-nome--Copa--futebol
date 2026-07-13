@@ -161,6 +161,7 @@ def mostrar_menu():
     print("1 - Listar jogadores cadastrados")
     print("2 - Buscar jogador pela chave")
     print("3 - Jogar adivinhacao")
+    print("4 - Cadastrar novo jogador")
     print("0 - Sair")
 
 
@@ -225,6 +226,48 @@ def jogar():
     print("O jogador correto era:", jogador["nome"])
 
 
+def cadastrar_jogador():
+    print("\n--- CADASTRAR NOVO JOGADOR ---")
+
+    chave = input("Digite a chave do jogador: ")
+    chave = chave.upper()
+
+    if chave in jogadores:
+        print("Essa chave ja existe. Cadastro cancelado.")
+        return
+
+    nome = input("Nome do jogador: ")
+    selecao = input("Selecao: ")
+    posicao = input("Posicao: ")
+
+    camisa = input("Numero da camisa: ")
+
+    while not camisa.isdigit():
+        print("Entrada invalida. Digite apenas numeros para a camisa.")
+        camisa = input("Numero da camisa: ")
+
+    geracao = input("Geracao: ")
+
+    dicas = []
+
+    print("Digite 5 dicas para esse jogador.")
+
+    for numero in range(1, 6):
+        dica = input("Dica " + str(numero) + ": ")
+        dicas.append(dica)
+
+    jogadores[chave] = {
+        "nome": nome,
+        "selecao": selecao,
+        "posicao": posicao,
+        "camisa": int(camisa),
+        "geracao": geracao,
+        "dicas": dicas
+    }
+
+    print("Jogador cadastrado com sucesso.")
+
+
 def executar_programa():
     while True:
         mostrar_menu()
@@ -239,6 +282,9 @@ def executar_programa():
 
         elif opcao == "3":
             jogar()
+
+        elif opcao == "4":
+            cadastrar_jogador()
 
         elif opcao == "0":
             print("Programa encerrado.")
