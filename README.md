@@ -49,3 +49,10 @@ Foi adicionada a funcionalidade de cadastrar novo jogador.
 O usuário informa chave, nome, seleção, posição, camisa, geração e cinco dicas. O novo jogador é inserido no dicionário principal `jogadores`.
 
 Também foi adicionado tratamento de entrada inválida para o número da camisa, impedindo que texto seja aceito quando se espera um número.
+## Atualização: atualização de jogador
+
+Foi adicionada a funcionalidade de atualizar jogador.
+
+O usuário informa a chave do jogador e escolhe qual campo deseja alterar: nome, seleção, posição, camisa, geração ou dicas.
+
+A atualização é feita diretamente no dicionário principal `jogadores`. Também há tratamento para chave inexistente e para entrada inválida no número da camisa.

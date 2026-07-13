@@ -162,6 +162,7 @@ def mostrar_menu():
     print("2 - Buscar jogador pela chave")
     print("3 - Jogar adivinhacao")
     print("4 - Cadastrar novo jogador")
+    print("5 - Atualizar jogador")
     print("0 - Sair")
 
 
@@ -268,6 +269,72 @@ def cadastrar_jogador():
     print("Jogador cadastrado com sucesso.")
 
 
+def atualizar_jogador():
+    print("\n--- ATUALIZAR JOGADOR ---")
+
+    chave = input("Digite a chave do jogador que deseja atualizar: ")
+    chave = chave.upper()
+
+    if chave not in jogadores:
+        print("Jogador nao encontrado.")
+        return
+
+    print("\nO que deseja atualizar?")
+    print("1 - Nome")
+    print("2 - Selecao")
+    print("3 - Posicao")
+    print("4 - Camisa")
+    print("5 - Geracao")
+    print("6 - Dicas")
+
+    opcao = input("Escolha uma opcao: ")
+
+    if opcao == "1":
+        novo_nome = input("Novo nome: ")
+        jogadores[chave]["nome"] = novo_nome
+        print("Nome atualizado com sucesso.")
+
+    elif opcao == "2":
+        nova_selecao = input("Nova selecao: ")
+        jogadores[chave]["selecao"] = nova_selecao
+        print("Selecao atualizada com sucesso.")
+
+    elif opcao == "3":
+        nova_posicao = input("Nova posicao: ")
+        jogadores[chave]["posicao"] = nova_posicao
+        print("Posicao atualizada com sucesso.")
+
+    elif opcao == "4":
+        nova_camisa = input("Nova camisa: ")
+
+        while not nova_camisa.isdigit():
+            print("Entrada invalida. Digite apenas numeros para a camisa.")
+            nova_camisa = input("Nova camisa: ")
+
+        jogadores[chave]["camisa"] = int(nova_camisa)
+        print("Camisa atualizada com sucesso.")
+
+    elif opcao == "5":
+        nova_geracao = input("Nova geracao: ")
+        jogadores[chave]["geracao"] = nova_geracao
+        print("Geracao atualizada com sucesso.")
+
+    elif opcao == "6":
+        novas_dicas = []
+
+        print("Digite as 5 novas dicas.")
+
+        for numero in range(1, 6):
+            dica = input("Dica " + str(numero) + ": ")
+            novas_dicas.append(dica)
+
+        jogadores[chave]["dicas"] = novas_dicas
+        print("Dicas atualizadas com sucesso.")
+
+    else:
+        print("Opcao invalida. Nenhuma alteracao foi feita.")
+
+
 def executar_programa():
     while True:
         mostrar_menu()
@@ -285,6 +352,9 @@ def executar_programa():
 
         elif opcao == "4":
             cadastrar_jogador()
+
+        elif opcao == "5":
+            atualizar_jogador()
 
         elif opcao == "0":
             print("Programa encerrado.")
