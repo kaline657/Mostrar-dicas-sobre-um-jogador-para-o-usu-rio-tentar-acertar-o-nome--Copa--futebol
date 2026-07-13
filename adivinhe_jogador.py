@@ -156,6 +156,30 @@ jogadores = {
 }
 
 
+def ler_texto_obrigatorio(mensagem):
+    texto = input(mensagem)
+    texto = texto.strip()
+
+    while texto == "":
+        print("Entrada invalida. Esse campo nao pode ficar vazio.")
+        texto = input(mensagem)
+        texto = texto.strip()
+
+    return texto
+
+
+def ler_numero_obrigatorio(mensagem):
+    numero = input(mensagem)
+    numero = numero.strip()
+
+    while not numero.isdigit():
+        print("Entrada invalida. Digite apenas numeros.")
+        numero = input(mensagem)
+        numero = numero.strip()
+
+    return int(numero)
+
+
 def mostrar_menu():
     print("\n===== ADIVINHE O JOGADOR DA COPA =====")
     print("1 - Listar jogadores cadastrados")
@@ -170,6 +194,10 @@ def mostrar_menu():
 def listar_jogadores():
     print("\n--- JOGADORES CADASTRADOS ---")
 
+    if len(jogadores) == 0:
+        print("Nao existem jogadores cadastrados.")
+        return
+
     for chave in jogadores:
         print("\nChave:", chave)
         print("Nome:", jogadores[chave]["nome"])
@@ -181,7 +209,7 @@ def listar_jogadores():
 
 def buscar_jogador():
     print("\n--- BUSCAR JOGADOR ---")
-    chave = input("Digite a chave do jogador: ")
+    chave = ler_texto_obrigatorio("Digite a chave do jogador: ")
     chave = chave.upper()
 
     if chave in jogadores:
@@ -198,6 +226,10 @@ def buscar_jogador():
 
 def jogar():
     print("\n--- JOGO DE ADIVINHAR JOGADOR ---")
+
+    if len(jogadores) == 0:
+        print("Nao existem jogadores cadastrados para jogar.")
+        return
 
     chaves = list(jogadores.keys())
     chave_sorteada = random.choice(chaves)
@@ -231,38 +263,32 @@ def jogar():
 def cadastrar_jogador():
     print("\n--- CADASTRAR NOVO JOGADOR ---")
 
-    chave = input("Digite a chave do jogador: ")
+    chave = ler_texto_obrigatorio("Digite a chave do jogador: ")
     chave = chave.upper()
 
     if chave in jogadores:
         print("Essa chave ja existe. Cadastro cancelado.")
         return
 
-    nome = input("Nome do jogador: ")
-    selecao = input("Selecao: ")
-    posicao = input("Posicao: ")
-
-    camisa = input("Numero da camisa: ")
-
-    while not camisa.isdigit():
-        print("Entrada invalida. Digite apenas numeros para a camisa.")
-        camisa = input("Numero da camisa: ")
-
-    geracao = input("Geracao: ")
+    nome = ler_texto_obrigatorio("Nome do jogador: ")
+    selecao = ler_texto_obrigatorio("Selecao: ")
+    posicao = ler_texto_obrigatorio("Posicao: ")
+    camisa = ler_numero_obrigatorio("Numero da camisa: ")
+    geracao = ler_texto_obrigatorio("Geracao: ")
 
     dicas = []
 
     print("Digite 5 dicas para esse jogador.")
 
     for numero in range(1, 6):
-        dica = input("Dica " + str(numero) + ": ")
+        dica = ler_texto_obrigatorio("Dica " + str(numero) + ": ")
         dicas.append(dica)
 
     jogadores[chave] = {
         "nome": nome,
         "selecao": selecao,
         "posicao": posicao,
-        "camisa": int(camisa),
+        "camisa": camisa,
         "geracao": geracao,
         "dicas": dicas
     }
@@ -273,7 +299,7 @@ def cadastrar_jogador():
 def atualizar_jogador():
     print("\n--- ATUALIZAR JOGADOR ---")
 
-    chave = input("Digite a chave do jogador que deseja atualizar: ")
+    chave = ler_texto_obrigatorio("Digite a chave do jogador que deseja atualizar: ")
     chave = chave.upper()
 
     if chave not in jogadores:
@@ -289,34 +315,30 @@ def atualizar_jogador():
     print("6 - Dicas")
 
     opcao = input("Escolha uma opcao: ")
+    opcao = opcao.strip()
 
     if opcao == "1":
-        novo_nome = input("Novo nome: ")
+        novo_nome = ler_texto_obrigatorio("Novo nome: ")
         jogadores[chave]["nome"] = novo_nome
         print("Nome atualizado com sucesso.")
 
     elif opcao == "2":
-        nova_selecao = input("Nova selecao: ")
+        nova_selecao = ler_texto_obrigatorio("Nova selecao: ")
         jogadores[chave]["selecao"] = nova_selecao
         print("Selecao atualizada com sucesso.")
 
     elif opcao == "3":
-        nova_posicao = input("Nova posicao: ")
+        nova_posicao = ler_texto_obrigatorio("Nova posicao: ")
         jogadores[chave]["posicao"] = nova_posicao
         print("Posicao atualizada com sucesso.")
 
     elif opcao == "4":
-        nova_camisa = input("Nova camisa: ")
-
-        while not nova_camisa.isdigit():
-            print("Entrada invalida. Digite apenas numeros para a camisa.")
-            nova_camisa = input("Nova camisa: ")
-
-        jogadores[chave]["camisa"] = int(nova_camisa)
+        nova_camisa = ler_numero_obrigatorio("Nova camisa: ")
+        jogadores[chave]["camisa"] = nova_camisa
         print("Camisa atualizada com sucesso.")
 
     elif opcao == "5":
-        nova_geracao = input("Nova geracao: ")
+        nova_geracao = ler_texto_obrigatorio("Nova geracao: ")
         jogadores[chave]["geracao"] = nova_geracao
         print("Geracao atualizada com sucesso.")
 
@@ -326,7 +348,7 @@ def atualizar_jogador():
         print("Digite as 5 novas dicas.")
 
         for numero in range(1, 6):
-            dica = input("Dica " + str(numero) + ": ")
+            dica = ler_texto_obrigatorio("Dica " + str(numero) + ": ")
             novas_dicas.append(dica)
 
         jogadores[chave]["dicas"] = novas_dicas
@@ -339,7 +361,7 @@ def atualizar_jogador():
 def remover_jogador():
     print("\n--- REMOVER JOGADOR ---")
 
-    chave = input("Digite a chave do jogador que deseja remover: ")
+    chave = ler_texto_obrigatorio("Digite a chave do jogador que deseja remover: ")
     chave = chave.upper()
 
     if chave in jogadores:
@@ -354,6 +376,7 @@ def executar_programa():
         mostrar_menu()
 
         opcao = input("\nEscolha uma opcao: ")
+        opcao = opcao.strip()
 
         if opcao == "1":
             listar_jogadores()
