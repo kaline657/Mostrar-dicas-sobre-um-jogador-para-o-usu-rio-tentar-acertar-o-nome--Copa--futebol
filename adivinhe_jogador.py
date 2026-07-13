@@ -157,6 +157,7 @@ jogadores = {
 def mostrar_menu():
     print("\n===== ADIVINHE O JOGADOR DA COPA =====")
     print("1 - Listar jogadores cadastrados")
+    print("2 - Buscar jogador pela chave")
     print("0 - Sair")
 
 
@@ -172,6 +173,23 @@ def listar_jogadores():
         print("Geracao:", jogadores[chave]["geracao"])
 
 
+def buscar_jogador():
+    print("\n--- BUSCAR JOGADOR ---")
+    chave = input("Digite a chave do jogador: ")
+    chave = chave.upper()
+
+    if chave in jogadores:
+        print("\n--- JOGADOR ENCONTRADO ---")
+        print("Chave:", chave)
+        print("Nome:", jogadores[chave]["nome"])
+        print("Selecao:", jogadores[chave]["selecao"])
+        print("Posicao:", jogadores[chave]["posicao"])
+        print("Camisa:", jogadores[chave]["camisa"])
+        print("Geracao:", jogadores[chave]["geracao"])
+    else:
+        print("Jogador nao encontrado. Verifique se a chave foi digitada corretamente.")
+
+
 def executar_programa():
     while True:
         mostrar_menu()
@@ -180,6 +198,9 @@ def executar_programa():
 
         if opcao == "1":
             listar_jogadores()
+
+        elif opcao == "2":
+            buscar_jogador()
 
         elif opcao == "0":
             print("Programa encerrado.")
